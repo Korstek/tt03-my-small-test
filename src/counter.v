@@ -1,6 +1,6 @@
 `default_nettype none
 
-module seven_segment_seconds #( parameter MAX_COUNT = 1000 ) (
+module seven_segment_seconds #( parameter MAX_COUNT = 'hFFFFF ) (
   input [7:0] io_in,
   output [7:0] io_out
 );
@@ -14,7 +14,7 @@ module seven_segment_seconds #( parameter MAX_COUNT = 1000 ) (
     assign io_out[7] = second_counter[4];
 
     // external clock is 1000Hz, so need 10 bit counter
-    reg [9:0] second_counter;
+    reg [20:0] second_counter;
     reg [3:0] digit;
 
     always @(posedge clk) begin
